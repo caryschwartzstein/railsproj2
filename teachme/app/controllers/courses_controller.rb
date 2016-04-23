@@ -1,12 +1,11 @@
 class CoursesController < ApplicationController
 	def index
-		# if !user_signed_in?
-		# 	# render 'devise/sessions/form'
-  #  			link_to "Login", new_user_session_path
-		# else
-		# 	@courses = Course.all
-		# end
-		@courses = Course.all
+		if user_signed_in? == false
+			redirect_to new_user_session_path
+		else
+			@courses = Course.all
+		end
+		# @courses = Course.all
 	end
 
 	def show
@@ -36,6 +35,11 @@ class CoursesController < ApplicationController
 	end
 
 	def join
+		if current_user.courses.include? Course.find(params[:id])
+			flash[:alert] = "You have already joined this course"
+			redirect_to action: 'index'
+			return
+		end
 		@course = Course.find(params[:id])
 		@course.users << current_user
 		current_user.courses << @course
