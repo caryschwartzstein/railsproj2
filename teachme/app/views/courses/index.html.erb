@@ -4,9 +4,9 @@
 	<p>There are no courses available</p>
 <% else %>
 	<% @courses.each do |course| %>
-	<a href=""> <%= course.title %> </a>
+	<a href="courses/<%= course.id %>"> <%= course.title %> </a>
 	<br>
 	<% end %>
 <% end %>
 <br>
-<a href="create">Create a Course!</a>
+<a href="/courses/new">Create a Course!</a>

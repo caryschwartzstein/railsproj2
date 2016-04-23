@@ -1,0 +1,14 @@
+<h1> My Schedule </h1>
+
+<% if @courses.size() < 1 %>
+	<p>You are not subscribed to any courses</p>
+<% else %>
+	<% @courses.each do |course| %>
+	<a href="courses/<%= course.id %>"> <%= course.title %> </a>
+	<br>
+	<% end %>
+<% end %>
+<br>
+<!-- <a href="">Join a Course!</a> -->
+<%= button_to('Join a Course', action: 'index' , method: "get") %>
+<!-- working on redirecting still -->

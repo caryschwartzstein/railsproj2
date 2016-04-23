@@ -1,0 +1,5 @@
+<h1> <%= @course.title %> </h1>
+
+
+ <%= button_to('Join Course', @course.id.to_s + '/join', method: "get") %>
+
