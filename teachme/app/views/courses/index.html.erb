@@ -1,0 +1,12 @@
+<h1> Course Catalogue </h1>
+
+<% if @courses.size() < 1 %>
+	<p>There are no courses available</p>
+<% else %>
+	<% @courses.each do |course| %>
+	<a href=""> <%= course.title %> </a>
+	<br>
+	<% end %>
+<% end %>
+<br>
+<a href="create">Create a Course!</a>
